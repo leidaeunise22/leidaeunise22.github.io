@@ -8,6 +8,8 @@ export type ExperienceEntry = {
   location: string;
   dateRange: string;
   bullets: string[];
+  // Optional live links shown as buttons. Leave `href` empty to hide one until it's ready.
+  links?: Array<{ label: string; href: string }>;
 } & SupportingMedia;
 
 export const experience: ExperienceEntry[] = [
@@ -55,11 +57,50 @@ export const experience: ExperienceEntry[] = [
       "Built Schedule Sphere, a full-stack scheduling app using Python, the Google Gemini API, and user input; led development of the business page to generate optimized work schedules.",
     ],
   },
+];
+
+export const projects: ExperienceEntry[] = [
+  {
+    title: "Desert Rose Coffee App",
+    organization: "Next.js, TypeScript, Firebase",
+    location: "El Paso, TX",
+    dateRange: "",
+    bullets: [
+      "Built an operations app for the coffee shop where I work part-time, the job that got me through college.",
+      "Helps baristas and admins handle daily checklists, inventory, drink recipes, and training guides in one place.",
+      "Currently implementing customer-facing ordering integrated with the shop's POS system API.",
+    ],
+    links: [{ label: "View app", href: "" }],
+  },
+  {
+    title: "Girls Who Code UTEP Website",
+    organization: "HTML, CSS, JavaScript, Firebase",
+    location: "El Paso, TX",
+    dateRange: "",
+    bullets: ["Established the chapter's first website to share events, resources, and ways to get involved."],
+    links: [{ label: "Visit site", href: "https://leidaeunise22.github.io/GWC_Website/" }],
+  },
+  {
+    title: "Reddtatstoo & Reddsairbrush Portfolio",
+    organization: "React, TypeScript, Vite",
+    location: "El Paso, TX",
+    dateRange: "",
+    bullets: ["Designed and built a portfolio for my dad to showcase his amazing airbrush and tattoo work."],
+    links: [{ label: "Visit site", href: "https://leidaeunise22.github.io/reddsairbrush/" }],
+  },
+  {
+    title: "SHPE/MAES Website Redesign",
+    organization: "Web",
+    location: "El Paso, TX",
+    dateRange: "",
+    bullets: ["Redesigned the chapter website to modernize its look and make information easier to find."],
+    links: [{ label: "Visit site", href: "" }],
+  },
   {
     title: "UTEP SHPE/MAES Mobile App",
     organization: "React Native, TypeScript",
     location: "El Paso, TX",
-    dateRange: "Project",
+    dateRange: "",
     bullets: [
       "Lead development of a React Native (Expo) mobile app for a 100+ member engineering organization.",
       "Manage and mentor a team of student developers, conduct code reviews, and coordinate releases via GitHub.",

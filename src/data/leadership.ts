@@ -2,23 +2,41 @@
 
 import type { SupportingMedia } from "./media";
 
-export type LeadershipRole = {
+// One step on an organization's timeline, most recent first.
+export type LeadershipMilestone = {
   title: string;
+  date?: string;
+  tag?: string; // e.g. "Elected", "Promoted"
+  summary?: string;
+  bullets?: string[];
+};
+
+export type LeadershipRole = {
   organization: string;
-  dateRange: string;
-  bullets: string[];
+  milestones: LeadershipMilestone[];
 } & SupportingMedia;
 
 export const leadership: LeadershipRole[] = [
   {
-    title: "Vice President",
     organization: "Girls Who Code",
-    dateRange: "Aug 2024 – May 2026",
-    bullets: [
-      "Lead chapter operations and executive board to advance Girls Who Code's mission on campus.",
-      "Facilitated 5+ coding and professional development sessions and workshops to enhance more than 15 members' technical/soft skills.",
-      "Promote inclusivity and representation in tech through community-driven programming.",
-      "Oversee event planning, outreach, and technical workshop execution for 20+ members.",
+    milestones: [
+      {
+        title: "Vice President",
+        date: "May 2025 – May 2026",
+        tag: "Elected",
+        bullets: [
+          "Lead chapter operations and executive board to advance Girls Who Code's mission on campus.",
+          "Facilitated 5+ coding and professional development sessions and workshops to enhance more than 15 members' technical/soft skills.",
+          "Promote inclusivity and representation in tech through community-driven programming.",
+          "Oversee event planning, outreach, and technical workshop execution for 20+ members.",
+        ],
+      },
+      {
+        title: "Project Manager",
+        date: "Aug 2024",
+        summary:
+          "Led my first workshop. Before AI tools were everywhere, I ran step-by-step workshops guiding students through building their own websites.",
+      },
     ],
     images: [
       { src: "/images/gwc.jpeg", alt: "Three Girls Who Code members in matching pink t-shirts" },
@@ -45,14 +63,24 @@ export const leadership: LeadershipRole[] = [
     ],
   },
   {
-    title: "Director of Technology",
-    organization: "Society of Hispanic Professional Engineers (SHPE)",
-    dateRange: "Jul 2025 – May 2026",
-    bullets: [
-      "Oversee two technical teams (website + mobile app), coordinating workflows and delegating tasks for a 100+ member chapter.",
-      "Manage the GitHub repository, enabling collaboration across officers and maintaining reproducibility of code contributions.",
-      "Direct and mentor the web committee, assigning tasks, reviewing progress, and ensuring quality control across all technical projects.",
-      "Lead end-to-end mobile app development by designing and running hands-on workshops guiding members through planning, coding, and deployment.",
+    organization: "SHPE/MAES",
+    milestones: [
+      {
+        title: "Director of Technology",
+        date: "Jul 2025 – May 2026",
+        tag: "Promoted",
+        bullets: [
+          "Oversee two technical teams (website + mobile app), coordinating workflows and delegating tasks for a 100+ member chapter.",
+          "Manage the GitHub repository, enabling collaboration across officers and maintaining reproducibility of code contributions.",
+          "Direct and mentor the web committee, assigning tasks, reviewing progress, and ensuring quality control across all technical projects.",
+          "Lead end-to-end mobile app development by designing and running hands-on workshops guiding members through planning, coding, and deployment.",
+        ],
+      },
+      {
+        title: "Webmaster Chair",
+        summary:
+          "Started on the officer board as Webmaster Chair. My initiatives and passion for the chapter's tech led to a promotion to lead mobile app development.",
+      },
     ],
     images: [{ src: "/images/shpe.jpg", alt: "SHPE officer team group photo" }],
   },

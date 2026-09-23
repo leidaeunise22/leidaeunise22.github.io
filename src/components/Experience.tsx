@@ -2,33 +2,67 @@ import PageHeader from "@/components/PageHeader";
 import AnimatedCard from "@/components/AnimatedCard";
 import CardMedia from "@/components/CardMedia";
 import { BriefcaseIcon } from "@/components/icons";
-import { experience } from "@/data/experience";
+import { experience, projects, type ExperienceEntry } from "@/data/experience";
+
+function EntryCard({ entry, index }: { entry: ExperienceEntry; index: number }) {
+  return (
+    <AnimatedCard index={index}>
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h3 className="font-display font-semibold text-ink">
+          {entry.title} · {entry.organization}
+        </h3>
+        {entry.dateRange ? <span className="text-sm text-ink/55">{entry.dateRange}</span> : null}
+      </div>
+      <p className="mt-1 text-sm text-ink/55">{entry.location}</p>
+      <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-ink/70">
+        {entry.bullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+      {entry.links?.some((link) => link.href) ? (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {entry.links
+            .filter((link) => link.href)
+            .map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full border border-cream bg-rose/15 px-3 py-1 text-xs font-semibold text-rose-deep shadow-sticker transition-colors hover:bg-rose/25"
+              >
+                {link.label} ↗
+              </a>
+            ))}
+        </div>
+      ) : null}
+      <CardMedia
+        images={entry.images}
+        linkedinUrl={entry.linkedinUrl}
+        title={`${entry.title} · ${entry.organization}`}
+        date={entry.dateRange}
+      />
+    </AnimatedCard>
+  );
+}
 
 export default function Experience() {
   return (
     <PageHeader index={3} title="Experience & Projects" icon={<BriefcaseIcon className="h-full w-full" />}>
       <ul className="space-y-6">
         {experience.map((entry, index) => (
-          <AnimatedCard key={`${entry.title}-${entry.organization}`} index={index}>
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="font-display font-semibold text-ink">
-                {entry.title} · {entry.organization}
-              </h3>
-              <span className="text-sm text-ink/55">{entry.dateRange}</span>
-            </div>
-            <p className="mt-1 text-sm text-ink/55">{entry.location}</p>
-            <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-ink/70">
-              {entry.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
-            <CardMedia
-              images={entry.images}
-              linkedinUrl={entry.linkedinUrl}
-              title={`${entry.title} · ${entry.organization}`}
-              date={entry.dateRange}
-            />
-          </AnimatedCard>
+          <EntryCard key={`${entry.title}-${entry.organization}`} entry={entry} index={index} />
+        ))}
+      </ul>
+
+      <h2 className="mt-14 mb-6 font-display text-2xl font-semibold text-ink sm:text-3xl">Projects</h2>
+      <ul className="space-y-6">
+        {projects.map((entry, index) => (
+          <EntryCard
+            key={`${entry.title}-${entry.organization}`}
+            entry={entry}
+            index={experience.length + index}
+          />
         ))}
       </ul>
     </PageHeader>

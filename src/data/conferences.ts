@@ -11,11 +11,36 @@ export type ConferenceEntry = {
 } & SupportingMedia;
 
 export const conferences: ConferenceEntry[] = [
+  // Most recent first.
+  {
+    name: "Great Minds in STEM (GMiS) Conference",
+    role: "CAHSI Scholar",
+    location: "Albuquerque, NM",
+    date: "October 2026",
+    description:
+      "Awarded a CAHSI scholarship to attend my third Great Minds in STEM conference.",
+  },
+  {
+    name: "TACC Symposium for Texas Researchers (TACCSTER)",
+    role: "Scholar",
+    location: "Austin, TX",
+    date: "September 2026",
+    description:
+      "Awarded a scholarship to attend TACCSTER, the Texas Advanced Computing Center's annual symposium where researchers from across Texas share science powered by supercomputing, AI, and large-scale data.",
+  },
+  {
+    name: "OSPOsium",
+    role: "Scholar",
+    location: "Austin, TX",
+    date: "September 2026",
+    description:
+      "Awarded a scholarship to attend the inaugural UT System Open Source Program Office Symposium at TACC, bringing together scientists, engineers, and students who use open-source software to advance research, plus a student career day with technical interviews and résumé workshops.",
+  },
   {
     name: "Grace Hopper Celebration",
     role: "Kalama Scholar",
-    location: "TODO: add city",
-    date: "TODO: add date",
+    location: "Chicago, IL",
+    date: "October 2025",
     description:
       "Selected as an AnitaB.org Kalama Scholar to attend the world's largest gathering of women and nonbinary technologists.",
     images: [
@@ -25,11 +50,17 @@ export const conferences: ConferenceEntry[] = [
     ],
   },
   {
-    name: "Google Conference Scholarship",
-    role: "Scholar",
-    location: "TODO: add city",
-    date: "TODO: add date",
-    description: "Awarded a scholarship by Google to attend and connect with industry engineers.",
+    name: "Great Minds in STEM (GMiS) Conference",
+    role: "CAHSI Scholar",
+    location: "San Diego, CA",
+    date: "October 2025",
+    description:
+      "Awarded a CAHSI scholarship to return to Great Minds in STEM and connect with industry engineers alongside fellow UTEP students.",
+    images: [
+      { src: "/images/gwcgmis.jpeg", alt: "Aleida with fellow UTEP students at the Great Minds in STEM conference" },
+      { src: "/images/gwcgmis2.jpeg", alt: "Aleida at the Great Minds in STEM conference step-and-repeat" },
+      { src: "/images/gwcgmis2-alt.jpg", alt: "Great Minds in STEM conference badge and lanyard" },
+    ],
   },
   {
     name: "Brookhaven National Laboratory Lab-Wide Symposium",
@@ -46,29 +77,10 @@ export const conferences: ConferenceEntry[] = [
   },
   {
     name: "Great Minds in STEM (GMiS) Conference",
-    role: "Attendee",
-    location: "TODO: add city",
-    date: "September 2026",
-    description: "Attended the Great Minds in STEM conference with fellow UTEP students.",
-    images: [
-      { src: "/images/gwcgmis.jpeg", alt: "Aleida with fellow UTEP students at the Great Minds in STEM conference" },
-      { src: "/images/gwcgmis2.jpeg", alt: "Aleida at the Great Minds in STEM conference step-and-repeat" },
-      { src: "/images/gwcgmis2-alt.jpg", alt: "Great Minds in STEM conference badge and lanyard" },
-    ],
-  },
-  {
-    name: "TACCSTER",
-    role: "Scholar",
-    location: "Austin, TX",
-    date: "September 2026",
+    role: "Google Conference Scholar",
+    location: "Fort Worth, TX",
+    date: "October 2024",
     description:
-      "Awarded a scholarship to attend the Texas Advanced Computing Center Symposium for Texas Researchers (TACCSTER).",
-  },
-  {
-    name: "TACC Symposium",
-    role: "Scholar",
-    location: "Austin, TX",
-    date: "September 2026",
-    description: "Awarded a scholarship to attend the TACC Symposium.",
+      "Awarded a Google Conference Scholarship to attend my first Great Minds in STEM conference.",
   },
 ];
