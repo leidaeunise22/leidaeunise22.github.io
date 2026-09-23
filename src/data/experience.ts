@@ -56,6 +56,14 @@ export const experience: ExperienceEntry[] = [
       "Participated in weekly technical interview prep and mock interviews with Google software engineers, receiving feedback and coaching.",
       "Built Schedule Sphere, a full-stack scheduling app using Python, the Google Gemini API, and user input; led development of the business page to generate optimized work schedules.",
     ],
+    images: [
+      { src: "/images/google-sign.jpg", alt: "Aleida standing beside the Google Atlanta sign" },
+      { src: "/images/google-atlanta.jpg", alt: "Google Tech Exchange class of 2024 presentation stage" },
+      { src: "/images/google-office.jpg", alt: "Google office lounge with plants and a Google sign" },
+      { src: "/images/google-atlanta-1.jpg", alt: "Welcome to Google Atlanta presentation" },
+      { src: "/images/google-tech-x-reception.jpg", alt: "Tech Exchange reception presentation screen" },
+      { src: "/images/google-g.jpg", alt: "Colorful Google G wall display" },
+    ],
   },
 ];
 
@@ -94,7 +102,7 @@ export const projects: ExperienceEntry[] = [
     location: "El Paso, TX",
     dateRange: "",
     bullets: ["Redesigned the chapter website to modernize its look and make information easier to find."],
-    links: [{ label: "Visit site", href: "" }],
+    links: [{ label: "Visit site", href: "https://utepshpemaes.org/" }],
   },
   {
     title: "UTEP SHPE/MAES Mobile App",

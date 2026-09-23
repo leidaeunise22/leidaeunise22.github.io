@@ -7,9 +7,10 @@ import { conferences } from "@/data/conferences";
 export default function Conferences() {
   return (
     <PageHeader index={6} title="Conferences" icon={<MicIcon className="h-full w-full" />}>
-      <ul className="space-y-6">
+      <ul className="conference-grid">
         {conferences.map((conf, index) => (
           <AnimatedCard key={`${conf.name}-${conf.date}`} index={index}>
+            <p className="mono conference-location">↗ {conf.location}</p>
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h3 className="font-display font-semibold text-ink">{conf.name}</h3>
               <span className="text-sm text-ink/55">{conf.date}</span>

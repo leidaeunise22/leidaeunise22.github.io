@@ -1,7 +1,6 @@
 import PageHeader from "@/components/PageHeader";
 import AnimatedCard from "@/components/AnimatedCard";
 import CardMedia from "@/components/CardMedia";
-import WashiTape from "@/components/WashiTape";
 import { CompassIcon } from "@/components/icons";
 import { leadership } from "@/data/leadership";
 import { awards } from "@/data/awards";
@@ -12,10 +11,9 @@ const pinnedAward = awards.find((award) => award.title === "Leaders of Mines");
 export default function Leadership() {
   return (
     <PageHeader index={4} title="Student Leadership" icon={<CompassIcon className="h-full w-full" />}>
-      <ul className="space-y-6">
+      <ul className="leadership-list">
         {pinnedAward ? (
           <AnimatedCard index={0}>
-            <WashiTape tone="gold" rotate={-3} className="-top-3 left-1/2 -translate-x-1/2" />
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="rounded-full bg-rose-deep px-2 py-0.5 text-xs font-semibold text-cream">
                 Leadership Award

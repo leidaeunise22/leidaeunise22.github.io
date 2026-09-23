@@ -5,11 +5,20 @@ import { BriefcaseIcon } from "@/components/icons";
 import { experience, projects, type ExperienceEntry } from "@/data/experience";
 
 function EntryCard({ entry, index }: { entry: ExperienceEntry; index: number }) {
+  const colorClass = entry.organization === "Lockheed Martin"
+    ? "entry-ai"
+    : entry.organization === "Brookhaven National Laboratory"
+      ? "entry-research"
+      : entry.title === "Desert Rose Coffee App"
+        ? "entry-coffee"
+        : "";
+
   return (
-    <AnimatedCard index={index}>
+    <AnimatedCard index={index} className={colorClass}>
+      <p className="mono entry-organization">{entry.organization}</p>
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="font-display font-semibold text-ink">
-          {entry.title} · {entry.organization}
+          {entry.title}
         </h3>
         {entry.dateRange ? <span className="text-sm text-ink/55">{entry.dateRange}</span> : null}
       </div>
@@ -49,14 +58,14 @@ function EntryCard({ entry, index }: { entry: ExperienceEntry; index: number }) 
 export default function Experience() {
   return (
     <PageHeader index={3} title="Experience & Projects" icon={<BriefcaseIcon className="h-full w-full" />}>
-      <ul className="space-y-6">
+      <ul className="entry-list">
         {experience.map((entry, index) => (
           <EntryCard key={`${entry.title}-${entry.organization}`} entry={entry} index={index} />
         ))}
       </ul>
 
-      <h2 className="mt-14 mb-6 font-display text-2xl font-semibold text-ink sm:text-3xl">Projects</h2>
-      <ul className="space-y-6">
+      <div className="detail-section-title"><p className="mono section-kicker">BUILT WITH PERSONAL CONTEXT</p><h2>Outside the <em>job description.</em></h2></div>
+      <ul className="entry-list">
         {projects.map((entry, index) => (
           <EntryCard
             key={`${entry.title}-${entry.organization}`}

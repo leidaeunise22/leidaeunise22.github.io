@@ -1,32 +1,19 @@
-"use client";
-
-import { motion } from "framer-motion";
-import PageHeader from "@/components/PageHeader";
-import StickerBadge from "@/components/StickerBadge";
-import { HeartIcon } from "@/components/icons";
+import Link from "next/link";
+import PageHeader from "./PageHeader";
+import PhotoSlot from "./PhotoSlot";
 import { about } from "@/data/about";
+import { profile } from "@/data/profile";
 
-const rotations = [-2, 1.5, -1, 2, -1.5, 1];
+const details = ["Good coffee is worth the extra minute.", "My favorite walking companions.", "The soundtrack I grew up with.", "Always curious about somewhere new.", "A different kind of practice.", "One stitch at a time."];
 
 export default function AboutMe() {
   return (
-    <PageHeader index={1} title="About Me" icon={<HeartIcon className="h-full w-full" />}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.4 }}
-        className="rounded-2xl border border-cream bg-cream p-6 shadow-sticker"
-      >
-        <p className="text-base leading-relaxed text-ink/80">{about.bio}</p>
-        <div className="mt-5 flex flex-wrap gap-2.5">
-          {about.facts.map((fact, index) => (
-            <StickerBadge key={fact} rotate={rotations[index % rotations.length]}>
-              {fact}
-            </StickerBadge>
-          ))}
-        </div>
-      </motion.div>
+    <PageHeader index={1} title="About Me">
+      <section className="about-story">
+        <div className="about-portrait"><PhotoSlot src={profile.headshotUrl} alt="Aleida Holguin" sizes="(max-width: 700px) 90vw, 430px"/><span className="mono">EL PASO, TEXAS / HOME BASE</span></div>
+        <div className="about-story-copy"><p className="mono section-kicker">HI, I’M ALEIDA.</p><h2>Many interests.<br/><em>One curious person.</em></h2><p>{about.bio}</p><Link href="/experience" className="text-link">See what I’m building ↗</Link></div>
+      </section>
+      <section className="offscreen-section"><div className="detail-section-title"><p className="mono section-kicker">WHEN THE LAPTOP CLOSES</p><h2>My other <em>tabs.</em></h2></div><div className="personality-grid">{about.facts.map((fact, index) => <article key={fact}><span className="mono">0{index + 1}</span><h3>{fact}</h3><p>{details[index]}</p></article>)}</div></section>
     </PageHeader>
   );
 }

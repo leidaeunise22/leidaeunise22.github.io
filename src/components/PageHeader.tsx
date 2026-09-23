@@ -1,54 +1,32 @@
-"use client";
-
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
-import FloatWrap from "@/components/FloatWrap";
+import Link from "next/link";
 
-type PageHeaderProps = {
-  index: number;
-  title: string;
-  icon?: ReactNode;
-  children: ReactNode;
-};
+const chapters = [
+  { href: "/about", label: "About", headline: "The person", accent: "behind the code.", description: "An engineer’s curiosity. A creative’s heart. A few things that make me, me.", note: "A LIFE BEYOND THE EDITOR", symbol: ":)" },
+  { href: "/education", label: "Education", headline: "Always a", accent: "work in progress.", description: "Studying computer science, asking better questions, and connecting theory to the things I build.", note: "LEARNING IS AN ITERATIVE PROCESS", symbol: "{}" },
+  { href: "/experience", label: "Experience", headline: "Curiosity meets", accent: "the real world.", description: "AI agents, scientific research, and software for my community. Here’s what I’ve been working on.", note: "IDEAS → EXPERIMENTS → IMPACT", symbol: "</>" },
+  { href: "/leadership", label: "Leadership", headline: "Building things.", accent: "Bringing people.", description: "Creating spaces where students can learn, lead, and see themselves in tech.", note: "BETTER TOGETHER, BY DESIGN", symbol: "✳" },
+  { href: "/awards", label: "Awards", headline: "Small steps.", accent: "Meaningful milestones.", description: "Recognition for the work, the community, and the curiosity that keeps me moving forward.", note: "A FEW MOMENTS TO REMEMBER", symbol: "✧" },
+  { href: "/conferences", label: "Conferences", headline: "New places.", accent: "Bigger perspectives.", description: "Research shared, conversations started, and a growing community beyond my campus.", note: "FIELD NOTES FROM ALONG THE WAY", symbol: "↗" },
+];
 
-export default function PageHeader({ index, title, icon, children }: PageHeaderProps) {
+type PageHeaderProps = { index: number; title: string; icon?: ReactNode; children: ReactNode };
+
+export default function PageHeader({ index, title, children }: PageHeaderProps) {
+  const chapter = chapters[index - 1];
+  const next = chapters[index % chapters.length];
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="relative mb-10"
-      >
-        <div className="flex items-center gap-3">
-          <span className="inline-flex -rotate-1 items-center justify-center rounded-xl border border-cream bg-rose-deep px-3 py-1.5 font-display text-sm font-semibold text-cream shadow-sticker">
-            ({String(index).padStart(2, "0")})
-          </span>
-          {icon ? (
-            <FloatWrap y={3} duration={4.5} className="h-8 w-8 shrink-0 text-rose-deep">
-              {icon}
-            </FloatWrap>
-          ) : null}
+    <div className={`detail-page detail-${chapter.label.toLowerCase()} page-shell`}>
+      <header className="detail-heading">
+        <div className="detail-breadcrumb mono"><Link href="/">HOME</Link><span>/ {String(index).padStart(2, "0")} — {title.toUpperCase()}</span></div>
+        <div className="detail-title-row">
+          <div><h1>{chapter.headline}<br/><em>{chapter.accent}</em></h1><p>{chapter.description}</p></div>
+          <span className="detail-symbol" aria-hidden="true">{chapter.symbol}</span>
         </div>
-        <h1 className="relative mt-3 inline-block font-display text-4xl font-semibold text-ink sm:text-5xl">
-          {title}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 200 12"
-            preserveAspectRatio="none"
-            className="absolute -bottom-2 left-0 h-3 w-full text-rose"
-          >
-            <path
-              d="M2 8 Q 20 2 38 8 T 74 8 T 110 8 T 146 8 T 182 8"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
-        </h1>
-      </motion.div>
+        <div className="detail-heading-bottom mono"><span>{chapter.note}</span><span>ALEIDA HOLGUIN / {String(index).padStart(2, "0")}</span></div>
+      </header>
       {children}
+      <Link href={next.href} className="next-chapter"><span className="mono">KEEP EXPLORING / NEXT CHAPTER</span><span>{next.label}<span aria-hidden="true">↗</span></span></Link>
     </div>
   );
 }
