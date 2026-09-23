@@ -1,63 +1,47 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  HeartIcon,
-  EducationIcon,
-  BriefcaseIcon,
-  CompassIcon,
-  TrophyIcon,
-  MicIcon,
-} from "@/components/icons";
+import PhotoSlot from "./PhotoSlot";
 
-const tiles = [
-  { href: "/about", label: "About me", blurb: "the person behind the code", icon: HeartIcon },
-  { href: "/education", label: "Education", blurb: "degree + coursework", icon: EducationIcon },
-  { href: "/experience", label: "Experience", blurb: "internships + projects", icon: BriefcaseIcon },
-  { href: "/leadership", label: "Leadership", blurb: "clubs I run", icon: CompassIcon },
-  { href: "/awards", label: "Awards", blurb: "honors + scholarships", icon: TrophyIcon },
-  { href: "/conferences", label: "Conferences", blurb: "talks + travel", icon: MicIcon },
+const chapters = [
+  ["/about", "About me", "Espresso, guitar, and everything in between."],
+  ["/education", "Education", "The foundations behind the things I build."],
+  ["/leadership", "Leadership", "Making room for more people in tech."],
+  ["/awards", "Awards", "A few meaningful milestones along the way."],
+  ["/conferences", "Conferences", "New places. New perspectives."],
 ];
 
 export default function ExploreGrid() {
   return (
-    <section className="mx-auto max-w-3xl px-4 pb-24 sm:px-6">
-      <motion.h2
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.4 }}
-        className="mb-6 text-center font-display text-3xl italic text-rose-deep"
-      >
-        Explore
-      </motion.h2>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {tiles.map((tile, index) => {
-          const Icon = tile.icon;
-          return (
-            <motion.div
-              key={tile.href}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-            >
-              <Link
-                href={tile.href}
-                className="group relative flex h-full flex-col items-center gap-2 rounded-2xl border border-cream bg-cream p-5 text-center shadow-sticker transition-transform hover:-translate-y-1"
-              >
-                <span className="absolute -left-2 -top-2 rounded-lg border border-cream bg-rose-deep px-1.5 py-0.5 font-display text-[10px] font-semibold text-cream shadow-sticker">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <Icon className="h-7 w-7 text-rose-deep transition-transform group-hover:scale-110" />
-                <span className="font-display text-sm font-semibold text-ink">{tile.label}</span>
-                <span className="text-xs text-ink/60">{tile.blurb}</span>
-              </Link>
-            </motion.div>
-          );
-        })}
-      </div>
-    </section>
+    <>
+      <section id="selected-work" className="selected-work page-shell">
+        <div className="section-top"><div><p className="mono section-kicker">01 / IDEAS INTO SOMETHING REAL</p><h2>Code with <em>context.</em></h2></div><Link className="text-link" href="/experience">All experience & projects ↗</Link></div>
+        <div className="work-grid">
+          <Link href="/experience" className="work-feature work-ai"><div className="project-art ai-art" aria-hidden="true"><span className="mono art-label">AGENT / REASONING LOOP</span><div className="agent-orbit"><span>observe</span><span>reason</span><span>act</span><div className="agent-center">ai<span>↗</span></div></div><span className="mono art-bottom">INPUT → REASON → TOOL CALL → RESOLVE</span></div><div className="project-copy"><span className="mono">LOCKHEED MARTIN / SOFTWARE ENGINEERING</span><h3>Teaching agents to troubleshoot.<span>↗</span></h3><p>Autonomous incident triage for smart manufacturing, powered by retrieval and a reason–act–observe loop.</p><div className="project-tags">Python · LangGraph · RAG</div></div></Link>
+          <Link href="/experience" className="work-feature work-bnl">
+            <div className="project-art bnl-art" aria-hidden="true">
+              <span className="mono art-label">BROOKHAVEN / NEURAL REPRESENTATIONS</span>
+              <div className="brain-slices">
+                {[0, 1, 2, 3].map(slice => (
+                  <svg key={slice} viewBox="0 0 140 170" className="brain-slice">
+                    <path d="M68 18C45 7 22 27 22 47C4 57 7 84 19 96C10 117 27 141 45 140C49 159 63 158 68 148ZM74 18C97 7 120 27 120 47C138 57 135 84 123 96C132 117 115 141 97 140C93 159 79 158 74 148Z" />
+                    <path d="M48 32Q28 45 44 60T38 94Q27 117 50 121M56 70Q39 83 55 100M94 32Q114 45 98 60T104 94Q115 117 92 121M86 70Q103 83 87 100" />
+                  </svg>
+                ))}
+              </div>
+              <span className="mono art-bottom">SPACE × TIME / 4D fMRI</span>
+            </div>
+            <div className="project-copy">
+              <span className="mono">BROOKHAVEN NATIONAL LAB / ML RESEARCH</span>
+              <h3>Reconstructing the brain.<span>↗</span></h3>
+              <p>Training implicit neural representations on 4D fMRI data to reconstruct brain volumes over time. A summer spent turning complex imaging data into a clearer picture.</p>
+              <div className="project-tags">Python · PyTorch · Implicit neural representations</div>
+            </div>
+          </Link>
+          <Link href="/experience" className="work-feature work-coffee"><div className="project-art coffee-art" aria-hidden="true"><span className="mono art-label">FROM BEHIND THE COUNTER</span><span className="coffee-wordmark">desert<br/><em>rose.</em></span><span className="coffee-mark">✳</span><span className="mono art-bottom">GOOD COFFEE. BETTER SYSTEMS.</span></div><div className="project-copy"><span className="mono">DESERT ROSE / A PERSONAL PROJECT</span><h3>From barista to builder.<span>↗</span></h3><p>Checklists, inventory, and recipes in one app, built for the coffee shop that got me through college.</p><div className="project-tags">Next.js · TypeScript · Firebase</div></div></Link>
+        </div>
+      </section>
+      <section className="human-section page-shell"><div className="human-photo"><PhotoSlot src="/images/gwc.jpeg" alt="Aleida with the Girls Who Code community" sizes="(max-width: 700px) 90vw, 440px"/></div><div className="human-copy"><p className="mono section-kicker">02 / THERE’S A HUMAN IN HERE</p><h2>More than<br/>a <em>commit history.</em></h2><p>I lead student organizations, make a good cup of coffee, and believe the best part of tech is the people you get to build with.</p><Link className="text-link" href="/about">A little more about me ↗</Link></div></section>
+      <section className="chapter-section page-shell"><p className="mono section-kicker">03 / KEEP EXPLORING</p>{chapters.map(([href,title,description],index)=><Link href={href} className="chapter-row" key={href}><span className="mono chapter-number">0{index+1}</span><h3>{title}</h3><p>{description}</p><span className="chapter-arrow">↗</span></Link>)}</section>
+      <section className="contact-section page-shell"><p className="mono section-kicker">NEXT / SOMETHING WE BUILD TOGETHER?</p><h2>Let’s make<br/><em>something matter.</em></h2><a className="solid-button" href="mailto:leidaeunise22@gmail.com">Say hello <span>↗</span></a><span className="contact-doodle" aria-hidden="true">:)</span></section>
+    </>
   );
 }

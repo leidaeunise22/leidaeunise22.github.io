@@ -34,7 +34,7 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   title: "Aleida Holguin — Portfolio",
   description:
-    "Student portfolio highlighting leadership roles, awards, scholarship conferences, and experience.",
+    "Aleida Holguin — software engineer, computer science student, and community builder in El Paso. Explore AI research, personal projects, and the person behind the code.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Header />
         <LightboxProvider>
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
         </LightboxProvider>
         <Footer />
       </body>
