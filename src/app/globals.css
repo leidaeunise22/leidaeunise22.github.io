@@ -1,26 +1,212 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* muted, editorial pink palette — dusty rose / wine / coffee, not candy */
+  --background: #faf3ef;
+  --foreground: #382531;
+
+  --rose: #d79baa;
+  --rose-deep: #a1395a;
+  --blush: #f0dcd8;
+  /* "sage" tokens repurposed from the old business-card theme into warm
+     sand/espresso secondary tones — keeps every component that already
+     reads --sage/--sage-deep working without a rename pass. */
+  --sage: #e8d7bd;
+  --sage-deep: #8a6244;
+  --cream: #fdf8f3;
+  --paper: #fdf8f3;
+  --ink: #382531;
+  --gold: #b8923f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-rose: var(--rose);
+  --color-rose-deep: var(--rose-deep);
+  --color-blush: var(--blush);
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --font-sans: var(--font-work-sans);
+  --font-display: var(--font-fraunces);
+  --font-script: var(--font-caveat);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-optical-sizing: auto;
+  position: relative;
+}
+
+/* faint paper grain under everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+}
+
+/* Layered so Tailwind utility classes (emitted in the "utilities" layer,
+   which wins over "base" regardless of specificity) can still override
+   position/z-index on direct children — e.g. a modal that needs `fixed`. */
+@layer base {
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+::selection {
+  background: var(--rose-deep);
+  color: white;
+}
+
+/* Fraunces' variable axes: a touch of softness, no "wonk" — crisp and
+   editorial rather than playful. */
+.font-display {
+  font-variation-settings: "SOFT" 20, "WONK" 0;
+}
+
+.text-gradient {
+  background-image: linear-gradient(100deg, var(--rose-deep) 10%, var(--rose) 55%, var(--blush) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* slow shimmering gradient sweep — reserved for the one signature accent */
+.text-shimmer {
+  background-image: linear-gradient(100deg, var(--rose-deep) 25%, var(--gold) 50%, var(--rose-deep) 75%);
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer-sweep 6s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* faint graph-paper texture — used behind the ID card header */
+.grid-paper {
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(rgba(161, 57, 90, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(161, 57, 90, 0.1) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* a thin hard offset plus a soft blur — reads as lifted paper, not a flat
+   die-cut sticker */
+.shadow-sticker {
+  box-shadow:
+    1px 2px 0 rgba(56, 37, 49, 0.1),
+    2px 5px 10px rgba(56, 37, 49, 0.1);
+}
+
+.shadow-sticker-lg {
+  box-shadow:
+    2px 3px 0 rgba(56, 37, 49, 0.12),
+    5px 10px 22px rgba(56, 37, 49, 0.14);
+}
+
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+  66% {
+    transform: translate(-3%, 4%) scale(0.95);
+  }
+}
+
+.animate-blob {
+  animation: blob-float 16s ease-in-out infinite;
+}
+
+.animate-blob-slow {
+  animation: blob-float 22s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: -5s;
+}
+
+.animation-delay-4000 {
+  animation-delay: -10s;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+@keyframes bounce-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-bounce-y {
+  animation: bounce-y 1.8s ease-in-out infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-blob-slow,
+  .animate-spin-slow,
+  .animate-bounce-y,
+  .animate-cursor,
+  .text-shimmer {
+    animation: none;
+  }
 }

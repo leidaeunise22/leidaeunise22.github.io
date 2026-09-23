@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal files not used by the site (keep out of the public repo)
+/public/images/Natal Chart Report.pdf
+/public/images/bc.pdf
+/public/images/gwctable.mov
+/public/docs/Holguin_Aleida_CS.docx
