@@ -14,11 +14,48 @@ export type LeadershipMilestone = {
 export type LeadershipRole = {
   organization: string;
   milestones: LeadershipMilestone[];
+  highlights?: Array<{ label: string; title: string; description: string; tag?: string } & SupportingMedia>;
 } & SupportingMedia;
 
 export const leadership: LeadershipRole[] = [
   {
     organization: "Girls Who Code",
+    highlights: [
+      {
+        label: "$300 raised",
+        tag: "Fundraiser",
+        title: "Ctrl + Alt + Caffeinate",
+        images: [
+          { src: "/images/gwccoffee1.jpeg", alt: "Girls Who Code team at the campus coffee fundraiser" },
+          { src: "/images/gwccoffee2.jpeg", alt: "Aleida beside the Ctrl + Alt + Caffeinate fundraiser sign" },
+        ],
+        description:
+          "I led our campus coffee fundraiser, where we made coffee and sold it to students, raising $300 for Girls Who Code. A chance to bring my barista experience into community leadership.",
+      },
+      {
+        label: "$450 raised",
+        tag: "Fundraiser",
+        title: "Leading at Minerpalooza",
+        images: [
+          { src: "/images/gwcminer.jpeg", alt: "Girls Who Code fortune-telling fundraiser booth at Minerpalooza" },
+          { src: "/images/gwcminer3.jpg", alt: "Girls Who Code members at their Minerpalooza booth" },
+          { src: "/images/gwcminer4.jpg", alt: "The Minerpalooza fundraiser booth lit up in the evening" },
+        ],
+        description:
+          "I led our Girls Who Code initiatives at Minerpalooza, raising $450 for the organization through our campus fundraising efforts.",
+      },
+      {
+        label: "Community outreach",
+        title: "Empowering young women",
+        images: [
+          { src: "/images/gwcwomen3.jpeg", alt: "Girls Who Code speaking at the El Paso Inc. Women of Impact event" },
+          { src: "/images/gwcwomen2.jpeg", alt: "Girls Who Code presentation to young women" },
+          { src: "/images/gwcwomen.jpeg", alt: "Attendees gathered at the young women’s outreach event" },
+        ],
+        description:
+          "Girls Who Code spoke at an El Paso Inc. event to empower young women and encourage them to see themselves in tech. We brought our chapter’s commitment to representation beyond campus and into the community.",
+      },
+    ],
     milestones: [
       {
         title: "Vice President",
@@ -35,7 +72,7 @@ export const leadership: LeadershipRole[] = [
         title: "Project Manager",
         date: "Aug 2024",
         summary:
-          "Led my first workshop. Before AI tools were everywhere, I ran step-by-step workshops guiding students through building their own websites.",
+          "Led my first Girls Who Code workshop, planning and teaching a step-by-step introduction to building a website. I guided students through the process as they created their own sites, making web development approachable and giving members a hands-on way to explore what they could create with code.",
       },
     ],
     images: [

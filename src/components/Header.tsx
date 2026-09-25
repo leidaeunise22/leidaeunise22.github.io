@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { profile } from "@/data/profile";
 
-const links = [["/about", "About"], ["/education", "Education"], ["/experience", "Work"],  ["/leadership", "Leadership"],  ["/awards", "Awards"], ["/conferences", "Conferences"]];
+const links = [["/about", "About"], ["/experience", "Work"], ["/leadership", "Leadership"], ["/awards", "Awards"], ["/conferences", "Conferences"]];
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);

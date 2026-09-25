@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 const chapters = [
-  { href: "/about", label: "About", headline: "The person", accent: "behind the code.", description: "An engineer’s curiosity. A creative’s heart. A few things that make me, me.", note: "A LIFE BEYOND THE EDITOR", symbol: ":)" },
+  { href: "/about", label: "About", headline: "The person", accent: "behind the code.", description: "A few things that make me, me.", symbol: ":)" },
   { href: "/education", label: "Education", headline: "Always a", accent: "work in progress.", description: "Studying computer science, asking better questions, and connecting theory to the things I build.", note: "LEARNING IS AN ITERATIVE PROCESS", symbol: "{}" },
   { href: "/experience", label: "Experience", headline: "Curiosity meets", accent: "the real world.", description: "AI agents, scientific research, and software for my community. Here’s what I’ve been working on.", note: "IDEAS → EXPERIMENTS → IMPACT", symbol: "</>" },
   { href: "/leadership", label: "Leadership", headline: "Building things.", accent: "Bringing people.", description: "Creating spaces where students can learn, lead, and see themselves in tech.", note: "BETTER TOGETHER, BY DESIGN", symbol: "✳" },
@@ -14,7 +14,9 @@ type PageHeaderProps = { index: number; title: string; icon?: ReactNode; childre
 
 export default function PageHeader({ index, title, children }: PageHeaderProps) {
   const chapter = chapters[index - 1];
-  const next = chapters[index % chapters.length];
+  const next = chapter.href === "/about" || chapter.href === "/education"
+    ? chapters[2]
+    : chapters[index % chapters.length];
   return (
     <div className={`detail-page detail-${chapter.label.toLowerCase()} page-shell`}>
       <header className="detail-heading">

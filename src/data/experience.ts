@@ -3,6 +3,7 @@
 import type { SupportingMedia } from "./media";
 
 export type ExperienceEntry = {
+  id?: string;
   title: string;
   organization: string;
   location: string;
@@ -14,6 +15,7 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
+    id: "lockheed-martin",
     title: "Software Engineer Intern",
     organization: "Lockheed Martin",
     location: "Remote",
@@ -24,9 +26,9 @@ export const experience: ExperienceEntry[] = [
       "Migrating the agent to LangGraph, architecting the core LLM node and conditional routing logic to direct execution between tool calls and deterministic actions, with a safety guard preventing infinite tool-calling loops in production.",
       "Automating ticket lifecycle management and engineer notifications with ServiceNow-style incident records, and authoring a 12-test unit suite validating log filtering, ticket updates, and notification integrity.",
     ],
-    images: [{ src: "/images/lockheed.jpg", alt: "Lockheed Martin company display" }],
   },
   {
+    id: "brookhaven",
     title: "Machine Learning Research Intern",
     organization: "Brookhaven National Laboratory",
     location: "Yaphank, NY",
@@ -69,6 +71,7 @@ export const experience: ExperienceEntry[] = [
 
 export const projects: ExperienceEntry[] = [
   {
+    id: "desert-rose",
     title: "Desert Rose Coffee App",
     organization: "Next.js, TypeScript, Firebase",
     location: "El Paso, TX",
@@ -114,6 +117,5 @@ export const projects: ExperienceEntry[] = [
       "Manage and mentor a team of student developers, conduct code reviews, and coordinate releases via GitHub.",
       "Manage GitHub workflows including branching, pull requests, and code reviews for a team of student developers.",
     ],
-    images: [{ src: "/images/shpeapp.jpg", alt: "SHPE MAES app listing on the App Store" }],
   },
 ];

@@ -1,22 +1,14 @@
 import Link from "next/link";
 import PhotoSlot from "./PhotoSlot";
 
-const chapters = [
-  ["/about", "About me", "Espresso, guitar, and everything in between."],
-  ["/education", "Education", "The foundations behind the things I build."],
-  ["/leadership", "Leadership", "Making room for more people in tech."],
-  ["/awards", "Awards", "A few meaningful milestones along the way."],
-  ["/conferences", "Conferences", "New places. New perspectives."],
-];
-
 export default function ExploreGrid() {
   return (
     <>
       <section id="selected-work" className="selected-work page-shell">
         <div className="section-top"><div><p className="mono section-kicker">01 / IDEAS INTO SOMETHING REAL</p><h2>Code with <em>context.</em></h2></div><Link className="text-link" href="/experience">All experience & projects ↗</Link></div>
         <div className="work-grid">
-          <Link href="/experience" className="work-feature work-ai"><div className="project-art ai-art" aria-hidden="true"><span className="mono art-label">AGENT / REASONING LOOP</span><div className="agent-orbit"><span>observe</span><span>reason</span><span>act</span><div className="agent-center">ai<span>↗</span></div></div><span className="mono art-bottom">INPUT → REASON → TOOL CALL → RESOLVE</span></div><div className="project-copy"><span className="mono">LOCKHEED MARTIN / SOFTWARE ENGINEERING</span><h3>Teaching agents to troubleshoot.<span>↗</span></h3><p>Autonomous incident triage for smart manufacturing, powered by retrieval and a reason–act–observe loop.</p><div className="project-tags">Python · LangGraph · RAG</div></div></Link>
-          <Link href="/experience" className="work-feature work-bnl">
+          <Link href="/experience#lockheed-martin" className="work-feature work-ai"><div className="project-art ai-art" aria-hidden="true"><span className="mono art-label">AGENT / REASONING LOOP</span><div className="agent-orbit"><span>observe</span><span>reason</span><span>act</span><div className="agent-center">ai<span>↗</span></div></div><span className="mono art-bottom">INPUT → REASON → TOOL CALL → RESOLVE</span></div><div className="project-copy"><span className="mono">LOCKHEED MARTIN / SOFTWARE ENGINEERING</span><h3>Teaching agents to troubleshoot.<span>↗</span></h3><p>Autonomous incident triage for smart manufacturing, powered by retrieval and a reason–act–observe loop.</p><div className="project-tags">Python · LangGraph · RAG</div></div></Link>
+          <Link href="/experience#brookhaven" className="work-feature work-bnl">
             <div className="project-art bnl-art" aria-hidden="true">
               <span className="mono art-label">BROOKHAVEN / NEURAL REPRESENTATIONS</span>
               <div className="brain-slices">
@@ -36,12 +28,10 @@ export default function ExploreGrid() {
               <div className="project-tags">Python · PyTorch · Implicit neural representations</div>
             </div>
           </Link>
-          <Link href="/experience" className="work-feature work-coffee"><div className="project-art coffee-art" aria-hidden="true"><span className="mono art-label">FROM BEHIND THE COUNTER</span><span className="coffee-wordmark">desert<br/><em>rose.</em></span><span className="coffee-mark">✳</span><span className="mono art-bottom">GOOD COFFEE. BETTER SYSTEMS.</span></div><div className="project-copy"><span className="mono">DESERT ROSE / A PERSONAL PROJECT</span><h3>From barista to builder.<span>↗</span></h3><p>Checklists, inventory, and recipes in one app, built for the coffee shop that got me through college.</p><div className="project-tags">Next.js · TypeScript · Firebase</div></div></Link>
+          <Link href="/experience#desert-rose" className="work-feature work-coffee"><div className="project-art coffee-art" aria-hidden="true"><span className="mono art-label">FROM BEHIND THE COUNTER</span><span className="coffee-wordmark">desert<br/><em>rose.</em></span><span className="coffee-mark">✳</span><span className="mono art-bottom">GOOD COFFEE. BETTER SYSTEMS.</span></div><div className="project-copy"><span className="mono">DESERT ROSE / A PERSONAL PROJECT</span><h3>From barista to builder.<span>↗</span></h3><p>Checklists, inventory, and recipes in one app, built for the coffee shop that got me through college.</p><div className="project-tags">Next.js · TypeScript · Firebase</div></div></Link>
         </div>
       </section>
       <section className="human-section page-shell"><div className="human-photo"><PhotoSlot src="/images/gwc.jpeg" alt="Aleida with the Girls Who Code community" sizes="(max-width: 700px) 90vw, 440px"/></div><div className="human-copy"><p className="mono section-kicker">02 / THERE’S A HUMAN IN HERE</p><h2>More than<br/>a <em>commit history.</em></h2><p>I lead student organizations, make a good cup of coffee, and believe the best part of tech is the people you get to build with.</p><Link className="text-link" href="/about">A little more about me ↗</Link></div></section>
-      <section className="chapter-section page-shell"><p className="mono section-kicker">03 / KEEP EXPLORING</p>{chapters.map(([href,title,description],index)=><Link href={href} className="chapter-row" key={href}><span className="mono chapter-number">0{index+1}</span><h3>{title}</h3><p>{description}</p><span className="chapter-arrow">↗</span></Link>)}</section>
-      <section className="contact-section page-shell"><p className="mono section-kicker">NEXT / SOMETHING WE BUILD TOGETHER?</p><h2>Let’s make<br/><em>something matter.</em></h2><a className="solid-button" href="mailto:leidaeunise22@gmail.com">Say hello <span>↗</span></a><span className="contact-doodle" aria-hidden="true">:)</span></section>
     </>
   );
 }

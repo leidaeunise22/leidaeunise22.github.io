@@ -14,7 +14,7 @@ function EntryCard({ entry, index }: { entry: ExperienceEntry; index: number }) 
         : "";
 
   return (
-    <AnimatedCard index={index} className={colorClass}>
+    <AnimatedCard id={entry.id} index={index} className={colorClass}>
       <p className="mono entry-organization">{entry.organization}</p>
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="font-display font-semibold text-ink">
@@ -50,6 +50,7 @@ function EntryCard({ entry, index }: { entry: ExperienceEntry; index: number }) 
         linkedinUrl={entry.linkedinUrl}
         title={`${entry.title} · ${entry.organization}`}
         date={entry.dateRange}
+        carousel
       />
     </AnimatedCard>
   );
@@ -64,7 +65,7 @@ export default function Experience() {
         ))}
       </ul>
 
-      <div className="detail-section-title"><p className="mono section-kicker">BUILT WITH PERSONAL CONTEXT</p><h2>Outside the <em>job description.</em></h2></div>
+      <div id="projects" className="detail-section-title scroll-mt-28"><p className="mono section-kicker">BUILT WITH PERSONAL CONTEXT</p><h2>Outside the <em>job description.</em></h2></div>
       <ul className="entry-list">
         {projects.map((entry, index) => (
           <EntryCard

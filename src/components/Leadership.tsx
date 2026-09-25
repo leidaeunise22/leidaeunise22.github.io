@@ -40,6 +40,20 @@ export default function Leadership() {
             <AnimatedCard key={role.organization} index={index + 1}>
               <h3 className="font-display text-lg font-semibold text-ink">{role.organization}</h3>
 
+              {role.highlights?.length ? (
+                <section aria-label={`${role.organization} leadership highlights`} className="my-8 grid gap-5 md:grid-cols-2">
+                  {role.highlights.map((highlight, highlightIndex) => (
+                    <article key={highlight.title} className={`leadership-highlight border-t border-ink/20 p-5 sm:p-6 ${highlight.title === "Empowering young women" ? "bg-[#dce3a5]/60" : highlightIndex === 0 ? "bg-[#e9b7bb]/40" : "bg-[#c9e5f5]/50"}`}>
+                      {highlight.tag ? <span className="mb-3 inline-block rounded-full bg-rose-deep px-3 py-1 text-xs font-semibold text-cream">{highlight.tag}</span> : null}
+                      <p className="mono mb-4 font-semibold uppercase text-rose-deep">{highlight.label}</p>
+                      <h4 className="font-display">{highlight.title}</h4>
+                      <p className="mt-3 text-base text-ink/80">{highlight.description}</p>
+                      <CardMedia images={highlight.images} title={highlight.title} />
+                    </article>
+                  ))}
+                </section>
+              ) : null}
+
               <ol className="mt-4 space-y-5 border-l-2 border-rose/60 pl-6">
                 {role.milestones.map((milestone, step) => {
                   const isCurrent = step === 0;

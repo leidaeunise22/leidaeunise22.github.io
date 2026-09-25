@@ -47,11 +47,11 @@ export default function Hero() {
           <p className="hero-intro">I’m {profile.firstName} — a software engineer,<br className="desktop-break"/> CS student, and a people person.</p>
           <p className="hero-description">From AI agents to the coffee shop down the street, I build things for the worlds I’m part of.</p>
           <div className="hero-actions"><a href="#selected-work" className="solid-button">Explore my work <span>↘</span></a><a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="text-link">The résumé ↗</a></div>
-          <div className="hero-footnote mono"><span className="code-symbol">&lt;/&gt;</span> A LITTLE LOGIC. A LOT OF HEART.</div>
+          <div className="hero-footnote mono"><span className="code-symbol">&lt;/&gt;</span> </div>
         </div>
         <motion.div className="hero-visual" initial={reduced ? false : {opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:.8,delay:.15}}>
           <div className="portrait-frame"><PhotoSlot src={profile.headshotUrl} alt="Aleida Holguin" sizes="(max-width: 700px) 80vw, 400px"/><span className="portrait-label mono">ALEIDA HOLGUIN </span></div>
-          <span className="handwritten-note">engineer brain,<br/>creative soul ↴</span>
+          {/* <span className="handwritten-note">engineer brain,<br/>creative soul ↴</span> */}
           {/* <span className="portrait-stamp" aria-hidden="true">built with<br/><strong>curiosity</strong><br/>since day one</span> */}
           <AlgorithmSketch/>
         </motion.div>
