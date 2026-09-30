@@ -83,4 +83,6 @@ Each nav tab is its own route (not a scroll anchor):
 
 ## Deploying
 
-Easiest option is [Vercel](https://vercel.com/new): push this folder to a GitHub repo and import it.
+Pushing to `main` deploys the live site to GitHub Pages. The workflow runs `npm run build:pages`, which creates a static export in `out/` and restores the local Spotify server routes after the build. GitHub Pages shows the default Cure track without polling Spotify.
+
+For live Spotify status, use a server host such as [Vercel](https://vercel.com/new) with `npm run build` and configure the server credentials described in [Spotify setup](docs/spotify-setup.md).

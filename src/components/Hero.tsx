@@ -10,6 +10,31 @@ import { profile } from "@/data/profile";
 const nodes = [{x:50,y:38},{x:25,y:92},{x:75,y:92},{x:12,y:150},{x:38,y:150},{x:62,y:150},{x:88,y:150}];
 const traversal = [0,1,3,4,2,5,6];
 
+function OrbitalStudy() {
+  return (
+    <svg className="orbital-study" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth=".8">
+        <circle cx="300" cy="300" r="95" />
+        <circle cx="300" cy="300" r="165" />
+        <circle cx="300" cy="300" r="240" />
+        <path d="M300 25v550M25 300h550" strokeOpacity=".25" />
+        <circle cx="300" cy="300" r="270" strokeDasharray="1 12" />
+      </g>
+      <circle cx="300" cy="300" r="24" fill="#b8923f" fillOpacity=".18" stroke="#b8923f" />
+      <g className="orbital-body orbital-body-inner">
+        <circle cx="300" cy="205" r="4" fill="currentColor" />
+      </g>
+      <g className="orbital-body orbital-body-middle">
+        <circle cx="135" cy="300" r="7" fill="#d6e3be" stroke="#768565" />
+      </g>
+      <g className="orbital-body orbital-body-outer">
+        <circle cx="300" cy="540" r="10" fill="#dfc6b4" stroke="currentColor" />
+        <path d="M285 540h30" stroke="currentColor" strokeWidth=".8" />
+      </g>
+    </svg>
+  );
+}
+
 function AlgorithmSketch() {
   const [step, setStep] = useState(-1);
   const [running, setRunning] = useState(false);
@@ -44,13 +69,15 @@ export default function Hero() {
       <div className="hero-eyebrow mono"><span><i className="status-dot"/> HELLO, WORLD. I’M ALEIDA.</span><span>EL PASO, TX ↗</span></div>
       <div className="hero-main">
         <div className="hero-copy">
-          <motion.h1 initial={reduced ? false : {opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{duration:.7}}><span>Curiosity,</span><br/><em>compiled.</em><span className="title-star" aria-hidden="true">✳</span></motion.h1>
+          <motion.h1 initial={reduced ? false : {opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{duration:.7}}><span>Curiosity,</span><br/><em>compiled.</em></motion.h1>
+          <p className="space-intro">Curious about software, people, and the universe.</p>
           <SpotifyWidget />
           {/* <p className="hero-intro">I’m {profile.firstName} — a software engineer,<br className="desktop-break"/> CS student, and a people person.</p> */}
           {/* <p className="hero-description">From AI agents to the coffee shop down the street, I build things for the worlds I’m part of.</p> */}
           <div className="hero-actions"><a href="#selected-work" className="solid-button">Explore my work <span>↘</span></a><a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="text-link">The résumé ↗</a></div>
         </div>
         <motion.div className="hero-visual" initial={reduced ? false : {opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:.8,delay:.15}}>
+          <OrbitalStudy />
           <div className="portrait-frame"><PhotoSlot src={profile.headshotUrl} alt="Aleida Holguin" sizes="(max-width: 700px) 80vw, 400px"/><span className="portrait-label mono">ALEIDA HOLGUIN </span></div>
           {/* <span className="handwritten-note">engineer brain,<br/>creative soul ↴</span> */}
           {/* <span className="portrait-stamp" aria-hidden="true">built with<br/><strong>curiosity</strong><br/>since day one</span> */}
