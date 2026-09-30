@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { profile } from "@/data/profile";
 
 const links = [["/about", "About"], ["/experience", "Work"], ["/leadership", "Leadership"], ["/awards", "Awards"], ["/conferences", "Conferences"]];
 export default function Header() {
@@ -22,7 +21,7 @@ export default function Header() {
           aria-label="Aleida Holguin home"
         >
           ah
-          <span>✳</span>
+          <span className="brand-decoration" aria-hidden="true">✳</span>
           <span className="brand-caption mono">
             ALEIDA<br />HOLGUIN
           </span>

@@ -309,6 +309,16 @@ h2 em { color:var(--rose-deep); }
 .agent-center { position:absolute; inset:60px; display:grid; place-items:center; font:italic 48px var(--font-fraunces),serif; transform:rotate(20deg); }
 .agent-center span { position:absolute; font:22px monospace; right:-15px; top:2px; transition:transform .3s; }
 .work-feature:hover .agent-center span { transform:translate(4px,-4px); }
+.agent-orbit { animation:ai-orbit-turn 12s linear infinite paused; }
+.agent-orbit::before { animation:ai-ring-turn 9s linear infinite paused; }
+.agent-orbit > span,.agent-center { animation:ai-orbit-counterturn 12s linear infinite paused; }
+.work-ai:is(:hover,:focus-visible) .agent-orbit,
+.work-ai:is(:hover,:focus-visible) .agent-orbit::before,
+.work-ai:is(:hover,:focus-visible) .agent-orbit > span,
+.work-ai:is(:hover,:focus-visible) .agent-center { animation-play-state:running; }
+@keyframes ai-orbit-turn { from { transform:rotate(-20deg); } to { transform:rotate(340deg); } }
+@keyframes ai-ring-turn { from { transform:rotate(-35deg); } to { transform:rotate(-395deg); } }
+@keyframes ai-orbit-counterturn { from { transform:rotate(20deg); } to { transform:rotate(-340deg); } }
 .coffee-art { background:var(--project-coffee-bg); color:var(--project-coffee-ink); display:flex; align-items:center; padding:45px; }
 .coffee-wordmark { font-family:var(--font-fraunces),serif; font-size:76px; line-height:.8; letter-spacing:-.06em; }
 .coffee-wordmark em { padding-left:38px; font-weight:400; }
@@ -515,20 +525,14 @@ h2 em { color:var(--rose-deep); }
 .leadership-highlight .gallery-photo:first-child { grid-column:auto; }
 .leadership-highlight .gallery-image-wrap { aspect-ratio:3 / 2; max-height:150px; }
 
-/* Orbital mechanics drawn as an understated astronomical plate. */
-.orbital-study { position:absolute; width:135%; max-width:600px; height:auto; left:50%; top:43%; transform:translate(-50%,-50%) rotate(-18deg); color:#857b64; opacity:.6; z-index:-1; pointer-events:none; }
+/* Landing-page portrait and code sketch. */
 .hero-visual { isolation:isolate; }
 .portfolio-hero .portrait-frame { transform:none; }
 .portfolio-hero .algorithm-sketch { transform:none; margin:20px 0 0; box-shadow:none; background:var(--background); }
-.orbital-body { transform-origin:300px 300px; animation:orbital-revolution 100s linear infinite; }
-.orbital-body-middle { animation-duration:160s; animation-direction:reverse; }
-.orbital-body-outer { animation-duration:220s; }
 .portfolio-hero .algorithm-sketch { border-color:#76856560; background:#e5ecd733; }
 .portfolio-hero .solid-button { background:#334339; }
 .portfolio-hero .solid-button:hover { background:#50664a; }
-@keyframes orbital-revolution { to { transform:rotate(360deg); } }
-@media (max-width:700px) { .orbital-study { width:125%; top:42%; opacity:.45; } .space-intro { font-size:17px; } }
-@media (prefers-reduced-motion:reduce) { .orbital-body { animation:none; } }
+@media (max-width:700px) { .space-intro { font-size:17px; } }
 
 /* A little rose-label record beside the landing-page introduction. */
 .spotify-widget { display:flex; align-items:center; gap:22px; position:relative; max-width:440px; margin:0 0 28px; padding:16px 14px 16px 0; }
@@ -556,53 +560,9 @@ h2 em { color:var(--rose-deep); }
 @keyframes vinyl-notes { 0% { opacity:0; transform:translate(0,0) rotate(-8deg); } 25%,55% { opacity:.8; } 100% { opacity:0; transform:translate(var(--note-x),var(--note-y)) rotate(12deg); } }
 @media (max-width:700px) { .spotify-widget { gap:15px; margin:0 0 24px; padding-right:10px; } .vinyl-scene { flex-basis:110px; height:110px; } .spotify-title { font-size:20px; } .vinyl-label span { font-size:23px; } }
 @media (prefers-reduced-motion:reduce) { .vinyl-motion-toggle { display:none; } }
-
-/* An astronomical window: forest-black sky, pale sage, and solar brass. */
-.observatory { margin-top:64px; }
-.observatory-top { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:24px; }
-.observatory-top h2 { font:400 clamp(28px,3.2vw,42px)/1.15 var(--font-fraunces),serif; letter-spacing:-.045em; }
-.observatory-top p { margin-top:12px; color:#606158; font-size:15px; line-height:1.6; }
-.observatory-switch { display:flex; flex-shrink:0; gap:4px; padding:4px; border:1px solid #76856555; background:#e5ecd7; }
-.observatory-switch button { padding:10px 17px; font-size:14px; cursor:pointer; color:#46583f; }
-.observatory-switch button[aria-pressed="true"] { background:#334339; color:#f3f2e8; }
-.observatory-sky { position:relative; overflow:hidden; background:#101b19; background-image:radial-gradient(ellipse at 70% 10%,#334a3c80,transparent 55%),radial-gradient(ellipse at 20% 90%,#53634935,transparent 60%); border:1px solid #344238; }
-.observatory-chart { display:block; width:100%; height:auto; min-height:300px; }
-.observatory-orbit { animation:observatory-revolution var(--orbit-duration) linear infinite; }
-.observatory-paused .observatory-orbit { animation-play-state:paused; }
-.observatory-rocket-flight { animation:observatory-revolution 28s linear infinite; }
-.rocket-exhaust { transform-origin:0 16px; animation:rocket-thrust 1.8s ease-in-out infinite; }
-.observatory-visitor { position:absolute; right:25%; bottom:-2px; width:56px; height:64px; cursor:pointer; padding:0; z-index:2; }
-.observatory-visitor svg { display:block; width:100%; animation:visitor-peek 16s ease-in-out infinite; }
-.observatory-visitor:hover svg,.observatory-visitor:focus-visible svg,.observatory-visitor.visitor-greeting svg { animation:none; transform:translateY(4px); }
-.observatory-visitor:focus-visible { outline-offset:-4px; }
-.visitor-message { position:absolute; right:calc(25% - 16px); bottom:76px; color:#d6e3be; font-size:12px; pointer-events:none; }
-.observatory-paused .observatory-rocket-flight,.observatory-paused .rocket-exhaust,.observatory-paused .observatory-visitor svg { animation-play-state:paused; }
-@keyframes rocket-thrust { 0%,100% { transform:scaleY(.7); opacity:.5; } 50% { transform:scaleY(1.1); opacity:.85; } }
-@keyframes visitor-peek { 0%,25%,75%,100% { transform:translateY(61px); } 35%,62% { transform:translateY(12px); } 48% { transform:translateY(6px) rotate(-5deg); } 55% { transform:translateY(6px) rotate(4deg); } }
-.observatory-sun-glow { filter:blur(22px); opacity:.55; }
-.observatory-corona { filter:blur(11px); opacity:.7; }
-.observatory-caption { position:absolute; bottom:20px; left:30px; right:30px; display:flex; justify-content:space-between; align-items:center; gap:16px; font-size:13px; color:#c6cfbb; }
-.observatory-caption button { font-size:12px; padding:6px 0; border-bottom:1px solid #c6cfbb70; cursor:pointer; }
-.observatory button:focus-visible,.observatory input:focus-visible { outline-color:#a8ba85; }
-.observatory-bottom { min-height:65px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:16px 0; border-bottom:1px solid #76856545; font-size:13px; color:#606158; }
-.observatory-scale { font-size:12px; color:#767b6c; }
-.eclipse-control { display:flex; align-items:center; gap:22px; flex:1; }
-.eclipse-control input { width:min(220px,100%); cursor:pointer; accent-color:#50664a; min-height:28px; }
-@keyframes observatory-revolution { to { transform:rotate(360deg); } }
 @media (max-width:700px) {
-  .observatory { margin-top:42px; }
-  .observatory-top { align-items:flex-start; flex-direction:column; gap:18px; }
-  .observatory-top p { max-width:300px; }
-  .observatory-chart { width:160%; max-width:none; margin-left:-30%; min-height:280px; }
-  .observatory-caption { left:16px; right:16px; bottom:14px; font-size:11px; }
-  .observatory-caption button { font-size:11px; }
-  .observatory-bottom { align-items:flex-start; flex-direction:column; gap:8px; }
-  .eclipse-control { width:100%; flex-wrap:wrap; gap:8px; }
-  .eclipse-control input { width:100%; }
-}
-@media (prefers-reduced-motion:reduce) {
-  .observatory-orbit,.observatory-rocket-flight,.rocket-exhaust,.observatory-visitor svg { animation:none; }
-  .observatory-visitor svg { transform:translateY(14px); }
+  .brand-decoration,.music-note,.coffee-mark,.title-star,.detail-symbol { display:none; }
+  .brand { gap:14px; }
 }
 
 /* Personal interests as bold graphic prints, with a palette for each subject. */
