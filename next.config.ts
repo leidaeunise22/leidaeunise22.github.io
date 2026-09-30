@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Static export for GitHub Pages
-  output: "export",
+  // Spotify authorization and live listening require server route handlers.
   trailingSlash: true,
   images: { unoptimized: true },
 };

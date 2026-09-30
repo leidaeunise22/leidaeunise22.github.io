@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import PhotoSlot from "./PhotoSlot";
+import SpotifyWidget from "./SpotifyWidget";
 import { profile } from "@/data/profile";
 
 const nodes = [{x:50,y:38},{x:25,y:92},{x:75,y:92},{x:12,y:150},{x:38,y:150},{x:62,y:150},{x:88,y:150}];
@@ -44,10 +45,10 @@ export default function Hero() {
       <div className="hero-main">
         <div className="hero-copy">
           <motion.h1 initial={reduced ? false : {opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{duration:.7}}><span>Curiosity,</span><br/><em>compiled.</em><span className="title-star" aria-hidden="true">✳</span></motion.h1>
-          <p className="hero-intro">I’m {profile.firstName} — a software engineer,<br className="desktop-break"/> CS student, and a people person.</p>
-          <p className="hero-description">From AI agents to the coffee shop down the street, I build things for the worlds I’m part of.</p>
+          <SpotifyWidget />
+          {/* <p className="hero-intro">I’m {profile.firstName} — a software engineer,<br className="desktop-break"/> CS student, and a people person.</p> */}
+          {/* <p className="hero-description">From AI agents to the coffee shop down the street, I build things for the worlds I’m part of.</p> */}
           <div className="hero-actions"><a href="#selected-work" className="solid-button">Explore my work <span>↘</span></a><a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="text-link">The résumé ↗</a></div>
-          <div className="hero-footnote mono"><span className="code-symbol">&lt;/&gt;</span> </div>
         </div>
         <motion.div className="hero-visual" initial={reduced ? false : {opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:.8,delay:.15}}>
           <div className="portrait-frame"><PhotoSlot src={profile.headshotUrl} alt="Aleida Holguin" sizes="(max-width: 700px) 80vw, 400px"/><span className="portrait-label mono">ALEIDA HOLGUIN </span></div>
